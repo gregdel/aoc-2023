@@ -1,33 +1,36 @@
-package main
+package day1
 
 import (
 	"bufio"
-	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
 	"unicode"
+
+	aoc "github.com/gregdel/aoc2023/lib"
 )
 
-var words = []string{
-	"zero",
-	"one",
-	"two",
-	"three",
-	"four",
-	"five",
-	"six",
-	"seven",
-	"eight",
-	"nine",
+func init() {
+	aoc.Register(&day1{})
 }
 
-func main() {
-	if err := run(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+var words = []string{
+	"zero", "one", "two", "three", "four",
+	"five", "six", "seven", "eight", "nine",
+}
+
+type day1 struct{}
+
+func (d *day1) Day() int {
+	return 1
+}
+
+func (d *day1) Solve(r io.Reader, part int) (string, error) {
+	return solve(r, part == 2)
+}
+
+func (d *day1) Expect(part int, test bool) string {
+	return aoc.NewResult("142", "53921", "281", "54676").Expect(part, test)
 }
 
 func transformLine(input string) string {
@@ -41,7 +44,7 @@ func transformLine(input string) string {
 	return line
 }
 
-func solve(reader io.Reader, transform bool) (int, error) {
+func solve(reader io.Reader, transform bool) (string, error) {
 	result := 0
 	var err error
 
@@ -63,7 +66,7 @@ func solve(reader io.Reader, transform bool) (int, error) {
 			if !foundFirst {
 				first, err = strconv.Atoi(string(r))
 				if err != nil {
-					return 0, err
+					return "", err
 				}
 				last = first
 				foundFirst = true
@@ -71,7 +74,7 @@ func solve(reader io.Reader, transform bool) (int, error) {
 
 			last, err = strconv.Atoi(string(r))
 			if err != nil {
-				return 0, err
+				return "", err
 			}
 		}
 
@@ -79,28 +82,5 @@ func solve(reader io.Reader, transform bool) (int, error) {
 		result += value
 	}
 
-	return result, nil
-}
-
-func run() error {
-	if len(os.Args) < 2 {
-		return fmt.Errorf("Missing filename")
-	}
-
-	filename := os.Args[1]
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	result, err := solve(file, true)
-	if err != nil {
-		return err
-	}
-
-	fmt.Printf("Result: %d\n", result)
-
-	return nil
+	return strconv.Itoa(result), nil
 }

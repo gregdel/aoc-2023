@@ -1,19 +1,63 @@
-package main
+package day2
 
 import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"strings"
+
+	aoc "github.com/gregdel/aoc2023/lib"
 )
 
-func main() {
-	if err := run(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+func init() {
+	aoc.Register(&day2{})
+}
+
+type day2 struct{}
+
+func (d *day2) Day() int {
+	return 2
+}
+
+func (d *day2) Solve(r io.Reader, part int) (string, error) {
+	games, err := parseInput(r)
+	if err != nil {
+		return "", err
 	}
+
+	if part == 1 {
+		return solve1(games), nil
+	}
+
+	return solve2(games), nil
+}
+
+func (d *day2) Expect(part int, test bool) string {
+	return aoc.NewResult("8", "1734", "2286", "70387").Expect(part, test)
+}
+
+func solve1(games []game) string {
+	max := [3]int{}
+	max[red] = 12
+	max[green] = 13
+	max[blue] = 14
+
+	result := 0
+	for _, game := range games {
+		if game.isPossible(max) {
+			result += game.id
+		}
+	}
+	return strconv.Itoa(result)
+}
+
+func solve2(games []game) string {
+	result := 0
+	for _, game := range games {
+		result += game.power()
+	}
+	return strconv.Itoa(result)
 }
 
 const (
@@ -102,52 +146,4 @@ func parseInput(reader io.Reader) ([]game, error) {
 	}
 
 	return games, nil
-}
-
-func solve1(games []game) int {
-	max := [3]int{}
-	max[red] = 12
-	max[green] = 13
-	max[blue] = 14
-
-	result := 0
-	for _, game := range games {
-		if game.isPossible(max) {
-			result += game.id
-		}
-	}
-
-	return result
-}
-
-func solve2(games []game) int {
-	result := 0
-	for _, game := range games {
-		result += game.power()
-	}
-
-	return result
-}
-
-func run() error {
-	if len(os.Args) < 2 {
-		return fmt.Errorf("Missing filename")
-	}
-
-	filename := os.Args[1]
-
-	file, err := os.Open(filename)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	games, err := parseInput(file)
-	if err != nil {
-		return err
-	}
-
-	result := solve2(games)
-	fmt.Printf("Result %d\n", result)
-	return nil
 }
