@@ -64,3 +64,11 @@ func Run(day, part int, test bool) (*RunResult, error) {
 
 	return result, nil
 }
+
+// MustGet returns v as is. It panics if err is non-nil.
+func MustGet[T any](v T, err error) T {
+	if err != nil {
+		panic(err)
+	}
+	return v
+}
