@@ -19,8 +19,8 @@ var (
 var Challenges map[int]Challenge = map[int]Challenge{}
 
 // Register registers a challenge
-func Register(c Challenge) {
-	Challenges[c.Day()] = c
+func Register(c Challenge, day int) {
+	Challenges[day] = c
 }
 
 // AllDays returns a list of all the days regitered
@@ -35,7 +35,6 @@ func AllDays() []int {
 
 // Challenge represents a challenge
 type Challenge interface {
-	Day() int
 	Solve(r io.Reader, part int) (string, error)
 	Expect(part int, test bool) string
 }

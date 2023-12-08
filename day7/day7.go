@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day{})
+	aoc.Register(&day{}, 7)
 }
 
 var scorePart1 = map[string]int{
@@ -156,10 +156,6 @@ func newGame() *game {
 }
 
 type day struct{}
-
-func (d *day) Day() int {
-	return 7
-}
 
 func (d *day) Expect(part int, test bool) string {
 	return aoc.NewResult("6440", "246795406", "5905", "249356515").Expect(part, test)

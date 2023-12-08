@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day1{})
+	aoc.Register(&day{}, 1)
 }
 
 var words = []string{
@@ -19,17 +19,13 @@ var words = []string{
 	"five", "six", "seven", "eight", "nine",
 }
 
-type day1 struct{}
+type day struct{}
 
-func (d *day1) Day() int {
-	return 1
-}
-
-func (d *day1) Solve(r io.Reader, part int) (string, error) {
+func (d *day) Solve(r io.Reader, part int) (string, error) {
 	return solve(r, part == 2)
 }
 
-func (d *day1) Expect(part int, test bool) string {
+func (d *day) Expect(part int, test bool) string {
 	return aoc.NewResult("142", "53921", "281", "54676").Expect(part, test)
 }
 

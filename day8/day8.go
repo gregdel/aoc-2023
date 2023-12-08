@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day{})
+	aoc.Register(&day{}, 8)
 }
 
 type game struct {
@@ -95,10 +95,6 @@ func (n *node) move(direction rune) *node {
 }
 
 type day struct{}
-
-func (d *day) Day() int {
-	return 8
-}
 
 func (d *day) Expect(part int, test bool) string {
 	return aoc.NewResult("6", "16697", "6", "10668805667831").Expect(part, test)

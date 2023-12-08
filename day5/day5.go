@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day{})
+	aoc.Register(&day{}, 5)
 }
 
 type interval struct {
@@ -177,10 +177,6 @@ type day struct {
 	seeds []seed
 	index map[string]*Map
 	maps  []*Map
-}
-
-func (d *day) Day() int {
-	return 5
 }
 
 func (d *day) Solve(r io.Reader, part int) (string, error) {

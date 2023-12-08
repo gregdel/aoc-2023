@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day{})
+	aoc.Register(&day{}, 3)
 }
 
 type element struct {
@@ -21,10 +21,6 @@ type element struct {
 }
 
 type day struct{}
-
-func (d *day) Day() int {
-	return 3
-}
 
 func distance(first, last element) int {
 	return last.x - (first.x + first.length)

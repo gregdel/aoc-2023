@@ -11,16 +11,12 @@ import (
 )
 
 func init() {
-	aoc.Register(&day2{})
+	aoc.Register(&day{}, 2)
 }
 
-type day2 struct{}
+type day struct{}
 
-func (d *day2) Day() int {
-	return 2
-}
-
-func (d *day2) Solve(r io.Reader, part int) (string, error) {
+func (d *day) Solve(r io.Reader, part int) (string, error) {
 	games, err := parseInput(r)
 	if err != nil {
 		return "", err
@@ -33,7 +29,7 @@ func (d *day2) Solve(r io.Reader, part int) (string, error) {
 	return solve2(games), nil
 }
 
-func (d *day2) Expect(part int, test bool) string {
+func (d *day) Expect(part int, test bool) string {
 	return aoc.NewResult("8", "1734", "2286", "70387").Expect(part, test)
 }
 

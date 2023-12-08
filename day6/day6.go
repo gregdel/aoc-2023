@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	aoc.Register(&day{})
+	aoc.Register(&day{}, 6)
 }
 
 type race struct {
@@ -33,10 +33,6 @@ func (r *race) waysToWin() int {
 }
 
 type day struct{}
-
-func (d *day) Day() int {
-	return 6
-}
 
 func (d *day) Solve(r io.Reader, part int) (string, error) {
 	result := 1
