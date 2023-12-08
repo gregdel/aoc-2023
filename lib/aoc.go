@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"time"
 )
@@ -20,6 +21,16 @@ var Challenges map[int]Challenge = map[int]Challenge{}
 // Register registers a challenge
 func Register(c Challenge) {
 	Challenges[c.Day()] = c
+}
+
+// AllDays returns a list of all the days regitered
+func AllDays() []int {
+	values := []int{}
+	for d := range Challenges {
+		values = append(values, d)
+	}
+	sort.Ints(values)
+	return values
 }
 
 // Challenge represents a challenge

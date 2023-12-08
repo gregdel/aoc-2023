@@ -26,20 +26,35 @@ func main() {
 
 func run() error {
 	var day, part int
-	var test, all bool
+	var all bool
+	var test *bool
 
 	flag.IntVar(&day, "day", 0, "day to run")
 	flag.IntVar(&part, "part", 0, "part to run")
-	flag.BoolVar(&test, "test", false, "run on test input")
 	flag.BoolVar(&all, "all", false, "run test and non test")
+	flag.BoolFunc("test", "run on test input", func(s string) error {
+		var testValue bool
+		if s == "true" || s == "1" {
+			testValue = true
+		}
+		test = &testValue
+		return nil
+	})
 	flag.Parse()
 
 	tests := []bool{true, false}
-	if !all && test {
-		tests = []bool{test}
+	if test != nil {
+		tests = []bool{*test}
 	}
 
-	if day == 0 {
+	days := []int{}
+	if all {
+		days = aoc.AllDays()
+	} else if day != 0 {
+		days = []int{day}
+	}
+
+	if len(days) == 0 {
 		return fmt.Errorf("Missing day")
 	}
 
@@ -48,14 +63,16 @@ func run() error {
 		parts = []int{part}
 	}
 
-	for _, part := range parts {
-		for _, test := range tests {
-			result, err := aoc.Run(day, part, test)
-			if err != nil {
-				return err
-			}
+	for _, day := range days {
+		for _, part := range parts {
+			for _, test := range tests {
+				result, err := aoc.Run(day, part, test)
+				if err != nil {
+					return err
+				}
 
-			result.Show()
+				result.Show()
+			}
 		}
 	}
 
