@@ -2,7 +2,10 @@ module github.com/gregdel/aoc2023
 
 go 1.21.0
 
-require github.com/jedib0t/go-pretty v4.3.0+incompatible
+require (
+	github.com/jedib0t/go-pretty v4.3.0+incompatible
+	golang.org/x/exp v0.0.0-20231206192017-f3f8817b8deb
+)
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
