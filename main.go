@@ -7,16 +7,15 @@ import (
 
 	aoc "github.com/gregdel/aoc2023/lib"
 
-	_ "github.com/gregdel/aoc2023/day1"
-	_ "github.com/gregdel/aoc2023/day2"
-	_ "github.com/gregdel/aoc2023/day3"
-	_ "github.com/gregdel/aoc2023/day4"
-	_ "github.com/gregdel/aoc2023/day5"
-	_ "github.com/gregdel/aoc2023/day6"
-	_ "github.com/gregdel/aoc2023/day7"
-	_ "github.com/gregdel/aoc2023/day8"
-	_ "github.com/gregdel/aoc2023/day9"
-
+	_ "github.com/gregdel/aoc2023/day01"
+	_ "github.com/gregdel/aoc2023/day02"
+	_ "github.com/gregdel/aoc2023/day03"
+	_ "github.com/gregdel/aoc2023/day04"
+	_ "github.com/gregdel/aoc2023/day05"
+	_ "github.com/gregdel/aoc2023/day06"
+	_ "github.com/gregdel/aoc2023/day07"
+	_ "github.com/gregdel/aoc2023/day08"
+	_ "github.com/gregdel/aoc2023/day09"
 	_ "github.com/gregdel/aoc2023/day10"
 )
 
