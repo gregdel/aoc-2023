@@ -20,6 +20,7 @@ import (
 	_ "github.com/gregdel/aoc2023/day11"
 	_ "github.com/gregdel/aoc2023/day12"
 	_ "github.com/gregdel/aoc2023/day13"
+	_ "github.com/gregdel/aoc2023/day14"
 )
 
 func main() {
