@@ -17,6 +17,21 @@ const (
 	DirectionLeft
 )
 
+// OppositeDirection returns the opposite direction of a direction.
+func OppositeDirection(d Direction) Direction {
+	switch d {
+	case DirectionUp:
+		return DirectionDown
+	case DirectionDown:
+		return DirectionUp
+	case DirectionRight:
+		return DirectionLeft
+	case DirectionLeft:
+		return DirectionRight
+	}
+	panic("Invalid direction")
+}
+
 // Point represents a 2d point
 type Point struct {
 	X, Y int
