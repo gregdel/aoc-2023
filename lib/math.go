@@ -22,3 +22,21 @@ func LeastCommonMultiple[T constraints.Integer](a, b T, integers ...T) T {
 
 	return result
 }
+
+// Min returns the min of two numbers
+func Min[T constraints.Integer](a, b T) T {
+	if a < b {
+		return a
+	}
+
+	return b
+}
+
+// Max returns the max of two numbers
+func Max[T constraints.Integer](a, b T) T {
+	if a > b {
+		return a
+	}
+
+	return b
+}

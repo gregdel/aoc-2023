@@ -15,7 +15,25 @@ const (
 	DirectionDown
 	DirectionRight
 	DirectionLeft
+	DirectionUnkown
 )
+
+var dirStrs = []string{
+	"Up", "Down", "Right", "Left", "Unknown",
+}
+
+// DirStr returns the string representation of a direction.
+func DirStr(d Direction) string {
+	return dirStrs[int(d)]
+}
+
+// AllDirection represents all the directions
+var AllDirection = []Direction{
+	DirectionDown,
+	DirectionLeft,
+	DirectionUp,
+	DirectionRight,
+}
 
 // OppositeDirection returns the opposite direction of a direction.
 func OppositeDirection(d Direction) Direction {
