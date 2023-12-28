@@ -40,3 +40,12 @@ func Max[T constraints.Integer](a, b T) T {
 
 	return b
 }
+
+// Abs returns the absolute value of v
+func Abs[T constraints.Integer](v T) T {
+	if v < 0 {
+		return -v
+	}
+
+	return v
+}
