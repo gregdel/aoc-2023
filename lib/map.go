@@ -18,6 +18,10 @@ const (
 	DirectionUnkown
 )
 
+func (d Direction) String() string {
+	return DirStr(d)
+}
+
 var dirStrs = []string{
 	"Up", "Down", "Right", "Left", "Unknown",
 }
@@ -46,6 +50,8 @@ func OppositeDirection(d Direction) Direction {
 		return DirectionLeft
 	case DirectionLeft:
 		return DirectionRight
+	case DirectionUnkown:
+		return DirectionUnkown
 	}
 	panic("Invalid direction")
 }
@@ -59,6 +65,10 @@ type Point struct {
 // NewPoint returns a new point
 func NewPoint(x, y int, c rune) *Point {
 	return &Point{X: x, Y: y, C: c}
+}
+
+func (p *Point) String() string {
+	return fmt.Sprintf("x:%d;y:%d", p.X, p.Y)
 }
 
 // Map2D represents a 2DMap
@@ -81,6 +91,16 @@ func (m *Map2D) AddPointsFromLine(line string) {
 	for x, c := range line {
 		m.Points[y][x] = NewPoint(x, y, c)
 	}
+}
+
+// Width returns the width of the map
+func (m *Map2D) Width() int {
+	return len(m.Points[0])
+}
+
+// Height returns the height of the map
+func (m *Map2D) Height() int {
+	return len(m.Points)
 }
 
 // ForAllPoints calls a function for each point in a map
@@ -174,4 +194,9 @@ func (m *Map2D) String() string {
 		out.WriteRune('\n')
 	}
 	return out.String()
+}
+
+// ManhattanDistance returns the ManhattanDistance between two points
+func ManhattanDistance(p1, p2 *Point) int {
+	return Abs(p1.X-p2.X) + Abs(p2.Y-p1.Y)
 }

@@ -1,5 +1,7 @@
 package aoc
 
+import "sort"
+
 // Queue represents a queue of items
 type Queue[T comparable] struct {
 	s []T
@@ -41,4 +43,12 @@ func (q *Queue[T]) Last() T {
 // Len returns the length of the set
 func (q Queue[T]) Len() int {
 	return len(q.s)
+}
+
+// Sort sorts the queue with the given compare function
+func (q Queue[T]) Sort(cmp func(a, b T) int) {
+	sort.Slice(q.s, func(i, j int) bool {
+		qi, qj := q.s[i], q.s[j]
+		return cmp(qi, qj) < 0
+	})
 }

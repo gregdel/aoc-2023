@@ -23,6 +23,7 @@ import (
 	_ "github.com/gregdel/aoc2023/day14"
 	_ "github.com/gregdel/aoc2023/day15"
 	_ "github.com/gregdel/aoc2023/day16"
+	_ "github.com/gregdel/aoc2023/day17"
 	_ "github.com/gregdel/aoc2023/day18"
 	_ "github.com/gregdel/aoc2023/day19"
 	_ "github.com/gregdel/aoc2023/day20"
