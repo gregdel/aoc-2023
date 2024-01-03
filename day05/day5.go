@@ -17,14 +17,6 @@ type interval struct {
 	source, destination, length int64
 }
 
-func (i interval) has(value int64) bool {
-	if value >= i.source && value <= (i.source+i.length-1) {
-		return true
-	}
-
-	return false
-}
-
 type seed struct {
 	source, length int64
 }
@@ -108,7 +100,6 @@ type Map struct {
 }
 
 func (m *Map) split(seeds []seed) []seed {
-	result := []seed{}
 	toSplit := seeds
 
 	for {
@@ -141,7 +132,7 @@ func (m *Map) split(seeds []seed) []seed {
 		tmp[s] = struct{}{}
 	}
 
-	result = []seed{}
+	result := []seed{}
 	for s := range tmp {
 		result = append(result, s)
 	}

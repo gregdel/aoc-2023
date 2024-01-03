@@ -19,7 +19,7 @@ var (
 // RunResult represents the result of a run
 type RunResult struct {
 	day, part        int
-	test, ok         bool
+	test             bool
 	output, expected string
 	start, stop      time.Time
 }

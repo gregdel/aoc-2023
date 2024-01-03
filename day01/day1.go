@@ -64,7 +64,6 @@ func solve(reader io.Reader, transform bool) (string, error) {
 				if err != nil {
 					return "", err
 				}
-				last = first
 				foundFirst = true
 			}
 

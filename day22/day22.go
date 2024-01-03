@@ -116,10 +116,6 @@ func newArea() *area {
 	}
 }
 
-func (a *area) at(x, y, z int) *brick {
-	return a.locations[newPoint(x, y, z)]
-}
-
 func (a *area) sortBricks() {
 	sort.Slice(a.bricks, func(i, j int) bool {
 		return a.bricks[i].from.z < a.bricks[j].from.z

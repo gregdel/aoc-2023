@@ -2,6 +2,7 @@ package aoc
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -41,12 +42,13 @@ type Challenge interface {
 
 // Open opens the input for a given day
 func Open(day, part int, test bool) (io.ReadCloser, error) {
+	dir := fmt.Sprintf("day%02d", day)
 	filename := "input"
 	if test {
 		filename = "input-test-" + strconv.Itoa(part)
 	}
 
-	path := filepath.Join("day"+strconv.Itoa(day), filename)
+	path := filepath.Join(dir, filename)
 	return os.Open(path)
 }
 

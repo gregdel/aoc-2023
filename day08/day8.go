@@ -13,9 +13,9 @@ func init() {
 }
 
 type game struct {
-	directions         string
-	startNode, endNode *node
-	nodes              map[string]*node
+	directions string
+	endNode    *node
+	nodes      map[string]*node
 }
 
 func newGame(directions string) *game {
