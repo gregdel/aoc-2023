@@ -9,6 +9,11 @@ func NewSet[T comparable]() Set[T] {
 }
 
 // Add adds an element to the set
+func (s *Set[T]) Reset() {
+	*s = map[T]struct{}{}
+}
+
+// Add adds an element to the set
 func (s Set[T]) Add(k T) {
 	s[k] = struct{}{}
 }
